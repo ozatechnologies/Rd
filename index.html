@@ -1,1 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rose Decore | Premium Surface Artistry</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a1a1a;
+            --accent: #c5a059; /* Elegant Gold */
+            --bg-light: #fafafa;
+            --text-muted: #666;
+        }
 
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--primary);
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, .serif {
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .nav-scrolled {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem !important;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+
+        .hero-gradient {
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1600585152220-90363fe7e115?auto=format&fit=crop&q=80&w=2000');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .gold-button {
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            transition: all 0.4s ease;
+        }
+
+        .gold-button:hover {
+            color: white;
+            background-color: var(--accent);
+        }
+
+        .product-card {
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .pdf-frame {
+            border: 1px solid #e5e5e5;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            background: #fff;
+        }
+
+        .floating-wa {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+            background: #25D366;
+            color: white;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .floating-wa:hover {
+            transform: scale(1.1);
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 400;
+            letter-spacing: -1px;
+        }
+
+        .stat-card {
+            border-left: 1px solid #ddd;
+            padding-left: 2rem;
+        }
+
+        /* Animation for typography */
+        .reveal-text {
+            animation: reveal 1.2s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+
+        @keyframes reveal {
+            0% { transform: translateY(30px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-500 px-12 py-8 flex justify-between items-center text-white">
+        <div class="text-2xl font-semibold tracking-widest serif">ROSE DECORE</div>
+        <div class="hidden md:flex gap-10 text-[10px] tracking-[0.3em] uppercase font-medium">
+            <a href="#home" class="hover:text-accent transition-colors">Home</a>
+            <a href="#products" class="hover:text-accent transition-colors">Products</a>
+            <a href="#about" class="hover:text-accent transition-colors">About</a>
+            <a href="#downloads" class="hover:text-accent transition-colors">Downloads</a>
+            <a href="#store" class="hover:text-accent transition-colors">Find Store</a>
+            <a href="#contact" class="hover:text-accent transition-colors">Contact</a>
+        </div>
+        <div class="flex items-center gap-6">
+            <i class="fas fa-search cursor-pointer text-sm"></i>
+            <i class="fas fa-shopping-bag cursor-pointer text-sm"></i>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-gradient h-screen flex items-center justify-center text-center text-white px-6">
+        <div class="max-w-4xl">
+            <p class="uppercase tracking-[0.5em] text-xs mb-6 reveal-text">The Art of Fine Surfacing</p>
+            <h1 class="text-6xl md:text-8xl serif italic mb-8 reveal-text" style="animation-delay: 0.2s;">Excellence in Every Layer</h1>
+            <div class="flex flex-col md:flex-row gap-4 justify-center reveal-text" style="animation-delay: 0.4s;">
+                <a href="#products" class="bg-white text-black px-10 py-4 text-xs tracking-widest uppercase font-bold hover:bg-accent hover:text-white transition-all">View Collections</a>
+                <a href="#catalogues" class="border border-white text-white px-10 py-4 text-xs tracking-widest uppercase font-bold hover:bg-white hover:text-black transition-all">Catalogue B2B</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 px-6 md:px-24 bg-white">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
+            <div>
+                <p class="text-accent uppercase tracking-widest text-xs mb-4">Our Heritage</p>
+                <h2 class="section-title serif mb-8 leading-tight">Defining Spaces Since 1994</h2>
+                <p class="text-text-muted leading-relaxed mb-6 text-lg font-light">
+                    Rose Decore stands at the intersection of architectural precision and aesthetic fluidity. We manufacture premium laminates (sunmica) that transform functional surfaces into works of art. 
+                </p>
+                <p class="text-text-muted leading-relaxed mb-8 font-light">
+                    Our commitment to sustainability and Swiss-inspired design has made us the preferred choice for luxury hospitality, corporate headquarters, and high-end residences worldwide.
+                </p>
+                <div class="grid grid-cols-2 gap-8">
+                    <div class="stat-card">
+                        <span class="text-3xl serif block">500+</span>
+                        <span class="text-[10px] uppercase tracking-widest text-text-muted">Global Finishes</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="text-3xl serif block">28+</span>
+                        <span class="text-[10px] uppercase tracking-widest text-text-muted">Years Expertise</span>
+                    </div>
+                </div>
+            </div>
+            <div class="relative">
+                <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&q=80&w=1000" alt="Process" class="w-full h-[600px] object-cover grayscale hover:grayscale-0 transition-all duration-1000">
+                <div class="absolute -bottom-10 -left-10 bg-white p-10 hidden lg:block shadow-xl">
+                    <p class="serif italic text-2xl">"Quality is the silent <br>ambassador of your brand."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section (Ecommerce View) -->
+    <section id="products" class="py-24 bg-[#f4f4f4] px-6 md:px-24">
+        <div class="flex justify-between items-end mb-16">
+            <div>
+                <p class="text-accent uppercase tracking-widest text-xs mb-4">The Collection</p>
+                <h2 class="section-title serif">Signature Series</h2>
+            </div>
+            <div class="flex gap-4">
+                <button class="p-4 border border-black hover:bg-black hover:text-white transition-all"><i class="fas fa-chevron-left"></i></button>
+                <button class="p-4 border border-black hover:bg-black hover:text-white transition-all"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+            <!-- Product -->
+            <div class="product-card group">
+                <div class="relative overflow-hidden mb-6 aspect-[4/5] bg-gray-200">
+                    <img src="https://images.unsplash.com/photo-1628592102751-ba83b035e450?auto=format&fit=crop&q=80&w=800" alt="Oak" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000">
+                    <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <button class="bg-white text-black px-8 py-3 text-[10px] tracking-widest uppercase font-bold">Quick View</button>
+                    </div>
+                </div>
+                <div class="flex justify-between items-start">
+                    <div>
+                        <h3 class="text-xl serif italic mb-1">Venetian Walnut</h3>
+                        <p class="text-xs text-text-muted uppercase tracking-widest">Matte Texture | 1.5mm</p>
+                    </div>
+                    <span class="font-medium">₹5,400</span>
+                </div>
+                <button class="mt-4 w-full py-3 border border-gray-300 text-[10px] uppercase tracking-widest font-bold hover:border-black transition-colors">Add to Project</button>
+            </div>
+
+            <div class="product-card group">
+                <div class="relative overflow-hidden mb-6 aspect-[4/5] bg-gray-200">
+                    <img src="https://images.unsplash.com/photo-1533090161767-e6ffed986c88?auto=format&fit=crop&q=80&w=800" alt="Marble" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000">
+                    <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <button class="bg-white text-black px-8 py-3 text-[10px] tracking-widest uppercase font-bold">Quick View</button>
+                    </div>
+                </div>
+                <div class="flex justify-between items-start">
+                    <div>
+                        <h3 class="text-xl serif italic mb-1">Carrara Statuario</h3>
+                        <p class="text-xs text-text-muted uppercase tracking-widest">High Gloss | 1.2mm</p>
+                    </div>
+                    <span class="font-medium">₹7,200</span>
+                </div>
+                <button class="mt-4 w-full py-3 border border-gray-300 text-[10px] uppercase tracking-widest font-bold hover:border-black transition-colors">Add to Project</button>
+            </div>
+
+            <div class="product-card group">
+                <div class="relative overflow-hidden mb-6 aspect-[4/5] bg-gray-200">
+                    <img src="https://images.unsplash.com/photo-1505330622279-bf7d7fc918f4?auto=format&fit=crop&q=80&w=800" alt="Metallic" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000">
+                    <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <button class="bg-white text-black px-8 py-3 text-[10px] tracking-widest uppercase font-bold">Quick View</button>
+                    </div>
+                </div>
+                <div class="flex justify-between items-start">
+                    <div>
+                        <h3 class="text-xl serif italic mb-1">Brushed Champagne</h3>
+                        <p class="text-xs text-text-muted uppercase tracking-widest">Metallic Series | 1.0mm</p>
+                    </div>
+                    <span class="font-medium">₹6,800</span>
+                </div>
+                <button class="mt-4 w-full py-3 border border-gray-300 text-[10px] uppercase tracking-widest font-bold hover:border-black transition-colors">Add to Project</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Downloads & PDF Viewer -->
+    <section id="downloads" class="py-24 px-6 md:px-24 bg-white">
+        <div class="text-center mb-16">
+            <p class="text-accent uppercase tracking-widest text-xs mb-4">Resources</p>
+            <h2 class="section-title serif">Digital Library</h2>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div class="pdf-frame p-8 flex flex-col items-center justify-center min-h-[500px] border">
+                <i class="fas fa-file-pdf text-5xl text-accent mb-6"></i>
+                <h4 class="text-2xl serif mb-4 italic">Catalogue 2024 - B2B Bulk Edition</h4>
+                <p class="text-center text-text-muted mb-8 max-w-sm">Detailed specifications, technical data sheets, and large-scale application visuals for architects.</p>
+                <div class="flex gap-4">
+                    <button class="bg-primary text-white px-8 py-3 text-[10px] tracking-widest uppercase font-bold">Preview Online</button>
+                    <a href="#" class="gold-button px-8 py-3 text-[10px] tracking-widest uppercase font-bold">Download PDF</a>
+                </div>
+            </div>
+
+            <div class="space-y-6">
+                <div class="flex items-center justify-between p-6 border-b border-gray-100 hover:bg-gray-50 transition-colors cursor-pointer">
+                    <div class="flex items-center gap-6">
+                        <span class="text-accent serif italic text-xl">01</span>
+                        <div>
+                            <h5 class="font-medium">Hospitality Range</h5>
+                            <p class="text-xs text-text-muted uppercase tracking-widest">Texture Guide</p>
+                        </div>
+                    </div>
+                    <i class="fas fa-download text-sm"></i>
+                </div>
+                <div class="flex items-center justify-between p-6 border-b border-gray-100 hover:bg-gray-50 transition-colors cursor-pointer">
+                    <div class="flex items-center gap-6">
+                        <span class="text-accent serif italic text-xl">02</span>
+                        <div>
+                            <h5 class="font-medium">Maintenance Manual</h5>
+                            <p class="text-xs text-text-muted uppercase tracking-widest">Care Instructions</p>
+                        </div>
+                    </div>
+                    <i class="fas fa-download text-sm"></i>
+                </div>
+                <div class="flex items-center justify-between p-6 border-b border-gray-100 hover:bg-gray-50 transition-colors cursor-pointer">
+                    <div class="flex items-center gap-6">
+                        <span class="text-accent serif italic text-xl">03</span>
+                        <div>
+                            <h5 class="font-medium">Certification Folder</h5>
+                            <p class="text-xs text-text-muted uppercase tracking-widest">ISO & Fire Rating</p>
+                        </div>
+                    </div>
+                    <i class="fas fa-download text-sm"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Find Store -->
+    <section id="store" class="py-24 bg-[#1a1a1a] text-white px-6 md:px-24">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+            <div>
+                <p class="text-accent uppercase tracking-widest text-xs mb-4">Location</p>
+                <h2 class="section-title serif">Experience Centers</h2>
+            </div>
+            <div class="relative w-full md:w-96">
+                <input type="text" placeholder="Locate by City or Zipcode..." class="w-full bg-transparent border-b border-gray-700 py-4 px-2 outline-none focus:border-accent transition-colors">
+                <i class="fas fa-location-arrow absolute right-2 top-5 text-accent"></i>
+            </div>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+            <div class="group cursor-pointer">
+                <div class="mb-6 overflow-hidden aspect-video">
+                    <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-700">
+                </div>
+                <h4 class="text-xl serif italic mb-2">Mumbai Studio</h4>
+                <p class="text-gray-400 text-sm mb-4">Senapati Bapat Marg, Lower Parel West</p>
+                <a href="#" class="text-accent uppercase text-[10px] tracking-[0.2em] font-bold">Directions <i class="fas fa-arrow-right ml-2 text-[8px]"></i></a>
+            </div>
+            <div class="group cursor-pointer">
+                <div class="mb-6 overflow-hidden aspect-video">
+                    <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-700">
+                </div>
+                <h4 class="text-xl serif italic mb-2">New Delhi Gallery</h4>
+                <p class="text-gray-400 text-sm mb-4">MG Road, Sultanpur Industrial Area</p>
+                <a href="#" class="text-accent uppercase text-[10px] tracking-[0.2em] font-bold">Directions <i class="fas fa-arrow-right ml-2 text-[8px]"></i></a>
+            </div>
+            <div class="group cursor-pointer">
+                <div class="mb-6 overflow-hidden aspect-video">
+                    <img src="https://images.unsplash.com/photo-1497215842964-222b430dc094?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-700">
+                </div>
+                <h4 class="text-xl serif italic mb-2">Singapore HQ</h4>
+                <p class="text-gray-400 text-sm mb-4">Robinson Road, Central Business Dist.</p>
+                <a href="#" class="text-accent uppercase text-[10px] tracking-[0.2em] font-bold">Directions <i class="fas fa-arrow-right ml-2 text-[8px]"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 px-6 md:px-24 bg-white">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-24">
+            <div>
+                <h2 class="section-title serif mb-8">Inquire</h2>
+                <p class="text-text-muted mb-12 text-lg">Whether it's a bespoke residential project or a global corporate rollout, our consultants are ready to assist.</p>
+                
+                <div class="space-y-8">
+                    <div class="flex gap-6">
+                        <div class="w-12 h-12 border border-gray-100 flex items-center justify-center shrink-0">
+                            <i class="fas fa-phone-alt text-xs"></i>
+                        </div>
+                        <div>
+                            <p class="text-[10px] uppercase tracking-widest text-text-muted mb-1">General Inquiry</p>
+                            <p class="font-medium">+91 22 4567 8900</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-6">
+                        <div class="w-12 h-12 border border-gray-100 flex items-center justify-center shrink-0">
+                            <i class="fas fa-envelope text-xs"></i>
+                        </div>
+                        <div>
+                            <p class="text-[10px] uppercase tracking-widest text-text-muted mb-1">Architectural Support</p>
+                            <p class="font-medium">bespoke@rosedecore.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
