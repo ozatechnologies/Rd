@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Rose Decore Global | Architectural Surfacing Systems</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Plus+Jakarta+Sans:wght@200..800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0a0a0a;
+            --accent: #c5a47e;
+            --bg: #ffffff;
+            --soft: #f8f8f8;
+            /* Fluid Typography */
+            --fluid-8xl: clamp(3.5rem, 12vw, 8rem);
+            --fluid-7xl: clamp(2.5rem, 10vw, 6rem);
+            --fluid-5xl: clamp(2rem, 8vw, 4rem);
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--primary);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            touch-action: manipulation;
+        }
+
+        .serif { font-family: 'Bodoni Moda', serif; }
+
+        /* Mobile Header Adaptation */
+        #main-header {
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* Hero Slider: Mobile Optimized */
+        .hero-slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transform: scale(1.1);
+            transition: opacity 1.2s ease, transform 1.2s ease;
+        }
+        .hero-slide.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Marquee: Faster & Smoother for Mobile */
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .marquee-track {
+            display: flex;
+            width: max-content;
+            animation: marquee 30s linear infinite;
+        }
+
+        /* Responsive Product Cards */
+        .product-card {
+            clip-path: inset(0 0 0 0);
+            transition: clip-path 0.5s ease;
+            height: clamp(500px, 80vh, 700px);
+        }
+        
+        @media (max-width: 768px) {
+            .product-card:active {
+                clip-path: inset(8px 8px 8px 8px);
+            }
+        }
+
+        .btn-luxe {
+            display: inline-flex;
+            align-items: center;
+            padding: 1rem 2rem;
+            background: var(--primary);
+            color: white;
+            font-size: 0.65rem;
+            font-weight: 800;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            transition: all 0.4s ease;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+        }
+
+        /* Prevent Text Overflow */
+        h1, h2 {
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+        /* Responsive Dot Pulse */
+        .location-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--accent);
+            border-radius: 50%;
+            position: absolute;
+            box-shadow: 0 0 10px var(--accent);
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(3); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Info Bar: Hidden on Small Mobile -->
+    <div class="hidden sm:flex bg-black text-[8px] text-white/40 uppercase tracking-[0.4em] py-2 px-6 lg:px-10 justify-between items-center z-[1100] relative">
+        <div>Logistics: APAC / EMEA / AMER</div>
+        <div class="flex gap-4">
+            <a href="#" class="hover:text-white transition-colors">Specifier Login</a>
+            <a href="#" class="hover:text-white transition-colors">Samples</a>
+        </div>
+    </div>
+
+    <!-- Main Global Nav: Compact for Mobile -->
+    <header class="fixed top-4 md:top-8 w-full z-[1000] px-4 md:px-10" id="main-header">
+        <div class="max-w-[1600px] mx-auto flex justify-between items-center py-4 md:py-6 px-6 md:px-10 glass rounded-full border border-black/5 shadow-xl">
+            <div class="flex items-center gap-6 lg:gap-12">
+                <a href="#" class="serif text-xl md:text-3xl font-black tracking-tighter">ROSE DECORE.</a>
+                <nav class="hidden xl:flex gap-8">
+                    <a href="#materials" class="nav-link text-[10px] uppercase font-bold tracking-widest">Materials</a>
+                    <a href="#technical" class="nav-link text-[10px] uppercase font-bold tracking-widest">Technical</a>
+                    <a href="#logistics" class="nav-link text-[10px] uppercase font-bold tracking-widest">Global Supply</a>
+                </nav>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="#enquire" class="bg-black text-white px-5 md:px-8 py-2 md:py-3 rounded-full text-[9px] md:text-[10px] font-bold uppercase tracking-widest hover:bg-[var(--accent)] transition-all">Enquiry</a>
+                <button class="xl:hidden text-lg"><i class="fa-solid fa-bars-staggered"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Full-Screen Hero: Orientation Aware -->
+    <section class="h-[100vh] w-full relative overflow-hidden bg-black">
+        <div id="hero-slider">
+            <div class="hero-slide active">
+                <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=2000&auto=format&fit=crop" class="w-full h-full object-cover brightness-50" alt="Hospitality">
+                <div class="absolute inset-0 flex items-center px-6 md:px-24">
+                    <div class="max-w-6xl">
+                        <p class="text-[var(--accent)] text-[9px] md:text-xs font-black uppercase tracking-[0.6em] mb-4 md:mb-6">Excellence in Hospitality</p>
+                        <h1 class="serif text-[var(--fluid-8xl)] text-white italic leading-[0.9] mb-8 md:mb-10">Surfacing <br>without <br class="md:hidden">Limits.</h1>
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <button class="btn-luxe justify-center">2026 Archive</button>
+                            <button class="px-8 py-4 border border-white/20 text-white text-[9px] font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-all">Order Samples</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-slide">
+                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2000&auto=format&fit=crop" class="w-full h-full object-cover brightness-50" alt="Corporate">
+                <div class="absolute inset-0 flex items-center px-6 md:px-24">
+                    <div class="max-w-6xl sm:text-right sm:ml-auto">
+                        <p class="text-[var(--accent)] text-[9px] md:text-xs font-black uppercase tracking-[0.6em] mb-4 md:mb-6">Global Infrastructure</p>
+                        <h1 class="serif text-[var(--fluid-8xl)] text-white italic leading-[0.9] mb-8 md:mb-10">Bespoke <br>at Scale.</h1>
+                        <button class="btn-luxe justify-center">Corporate Portal</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Bottom Controls -->
+        <div class="absolute bottom-12 md:bottom-20 left-6 md:left-24 right-6 md:right-auto flex flex-col sm:flex-row items-start sm:items-end gap-6 md:gap-10">
+            <div class="flex flex-col gap-2 w-full sm:w-64">
+                <span class="text-white/40 text-[9px] md:text-[10px] font-bold">01 / 02</span>
+                <div class="w-full h-[1px] bg-white/10 relative">
+                    <div class="absolute h-full bg-[var(--accent)] transition-all duration-1000" id="hero-progress" style="width: 50%"></div>
+                </div>
+            </div>
+            <p class="hidden md:block text-white/40 text-[9px] uppercase tracking-[0.4em] font-bold">Scroll to Explore</p>
+        </div>
+    </section>
+
+    <!-- Trust Marquee: Full Width Mobile -->
+    <section class="py-12 md:py-20 bg-white border-b border-black/5 overflow-hidden">
+        <p class="text-[8px] md:text-[10px] font-black uppercase tracking-[0.4em] text-center opacity-30 mb-8 px-6">Trusted by Architectural Leaders Worldwide</p>
+        <div class="marquee-track">
+            <div class="flex gap-12 md:gap-24 items-center px-6">
+                <span class="serif text-2xl md:text-4xl opacity-30 px-4">MARRIOTT</span>
+                <span class="serif text-2xl md:text-4xl opacity-30 px-4">RELIANCE</span>
+                <span class="serif text-2xl md:text-4xl opacity-30 px-4">HILTON</span>
+                <span class="serif text-2xl md:text-4xl opacity-30 px-4">FOUR SEASONS</span>
+                <span class="serif text-2xl md:text-4xl opacity-30 px-4">LODHA</span>
+            </div>
+            <div class="flex gap-12 md:gap-24 items-center px-6">
+                <span class="serif text-2xl md:text-4xl opacity-30 px-4">MARRIOTT</span>
+                <span class="serif text-2xl md:text-4xl opacity-30 px-4">RELIANCE</span>
+                <span class="serif text-2xl md:text-4xl opacity-30 px-4">HILTON</span>
+                <span class="serif text-2xl md:text-4xl opacity-30 px-4">FOUR SEASONS</span>
+                <span class="serif text-2xl md:text-4xl opacity-30 px-4">LODHA</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Material Explorer: Mobile Column Grid -->
+    <section id="materials" class="py-24 md:py-40 px-6 md:px-24">
+        <div class="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-16 md:mb-24 gap-8">
+            <div class="max-w-3xl">
+                <span class="text-[9px] md:text-[10px] font-black uppercase tracking-[0.4em] text-[var(--accent)] block mb-4">The Archive</span>
+                <h2 class="serif text-[var(--fluid-7xl)] italic leading-tight">Material <br>Systems.</h2>
+            </div>
+            <div class="lg:text-right max-w-sm">
+                <p class="text-base md:text-xl text-gray-400 font-light mb-8">Architectural grade systems engineered for global performance standards.</p>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 md:gap-6">
+            <!-- Wood -->
+            <div class="product-card group relative overflow-hidden bg-black">
+                <img src="https://images.unsplash.com/photo-1544457070-4cd773b4d71e?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover opacity-60 md:opacity-70 md:group-hover:scale-105 transition-all duration-700" alt="Woods">
+                <div class="absolute inset-0 p-8 md:p-12 flex flex-col justify-between text-white">
+                    <span class="text-[9px] uppercase tracking-widest font-bold">Series 01</span>
+                    <div>
+                        <h3 class="serif text-4xl md:text-5xl mb-4 italic">Botanical <br>Woods</h3>
+                        <a href="#" class="inline-block text-[9px] uppercase tracking-widest font-bold border-b border-white pb-1">Explore</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Stone -->
+            <div class="product-card group relative overflow-hidden bg-black">
+                <img src="https://images.unsplash.com/photo-1615529151169-7b1ff50dc7f2?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover opacity-60 md:opacity-70 md:group-hover:scale-105 transition-all duration-700" alt="Stones">
+                <div class="absolute inset-0 p-8 md:p-12 flex flex-col justify-between text-white">
+                    <span class="text-[9px] uppercase tracking-widest font-bold">Series 02</span>
+                    <div>
+                        <h3 class="serif text-4xl md:text-5xl mb-4 italic">Mineral <br>Sintered</h3>
+                        <a href="#" class="inline-block text-[9px] uppercase tracking-widest font-bold border-b border-white pb-1">Explore</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Metal -->
+            <div class="product-card group relative overflow-hidden bg-black">
+                <img src="https://images.unsplash.com/photo-1513519245088-0e12902e35ca?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover opacity-60 md:opacity-70 md:group-hover:scale-105 transition-all duration-700" alt="Metals">
+                <div class="absolute inset-0 p-8 md:p-12 flex flex-col justify-between text-white">
+                    <span class="text-[9px] uppercase tracking-widest font-bold">Series 03</span>
+                    <div>
+                        <h3 class="serif text-4xl md:text-5xl mb-4 italic">Metallic <br>Flux</h3>
+                        <a href="#" class="inline-block text-[9px] uppercase tracking-widest font-bold border-b border-white pb-1">Explore</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Solid -->
+            <div class="product-card group relative overflow-hidden bg-black">
+                <img src="https://images.unsplash.com/photo-1550418406-b84123c52834?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover opacity-60 md:opacity-70 md:group-hover:scale-105 transition-all duration-700" alt="Solids">
+                <div class="absolute inset-0 p-8 md:p-12 flex flex-col justify-between text-white">
+                    <span class="text-[9px] uppercase tracking-widest font-bold">Series 04</span>
+                    <div>
+                        <h3 class="serif text-4xl md:text-5xl mb-4 italic">Solid <br>Technical</h3>
+                        <a href="#" class="inline-block text-[9px] uppercase tracking-widest font-bold border-b border-white pb-1">Explore</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Global Infrastructure: Stacked for Mobile -->
+    <section id="logistics" class="py-24 md:py-40 bg-[var(--soft)] px-6 md:px-24">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 md:gap-32 items-center">
+            <div>
+                <span class="text-[9px] md:text-[10px] font-black uppercase tracking-[0.4em] text-[var(--accent)] block mb-4">Operations</span>
+                <h2 class="serif text-[var(--fluid-7xl)] mb-12 italic leading-tight">Global <br>Network.</h2>
+                <div class="space-y-12">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                        <div class="border-l-2 border-black pl-6">
+                            <h4 class="font-black text-[10px] uppercase tracking-widest mb-2">Manufacturing</h4>
+                            <p class="text-sm text-gray-500">Gujarat, India Hub</p>
+                        </div>
+                        <div class="border-l-2 border-black pl-6">
+                            <h4 class="font-black text-[10px] uppercase tracking-widest mb-2">Supply</h4>
+                            <p class="text-sm text-gray-500">48Hr Logistics EMEA</p>
+                        </div>
+                    </div>
+                    <!-- Stats Grid -->
+                    <div class="bg-white p-8 md:p-10 shadow-xl rounded-2xl grid grid-cols-2 sm:grid-cols-3 gap-8">
+                        <div>
+                            <p class="serif text-3xl md:text-4xl text-[var(--accent)]">12M+</p>
+                            <p class="text-[8px] font-bold uppercase tracking-widest opacity-40">Exports</p>
+                        </div>
+                        <div>
+                            <p class="serif text-3xl md:text-4xl text-[var(--accent)]">450+</p>
+                            <p class="text-[8px] font-bold uppercase tracking-widest opacity-40">Textures</p>
+                        </div>
+                        <div class="col-span-2 sm:col-span-1">
+                            <p class="serif text-3xl md:text-4xl text-[var(--accent)]">ISO</p>
+                            <p class="text-[8px] font-bold uppercase tracking-widest opacity-40">Certified</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Map Visualization: Square for Mobile -->
+            <div class="relative aspect-square bg-gray-200 rounded-3xl overflow-hidden border-[10px] md:border-[20px] border-white shadow-2xl">
+                <img src="https://images.unsplash.com/photo-1526772662000-3f88f10405ff?q=80&w=1500&auto=format&fit=crop" class="w-full h-full object-cover opacity-30 grayscale" alt="Map">
+                <div class="location-dot top-1/3 left-1/4"></div>
+                <div class="location-dot top-1/2 left-3/4"></div>
+                <div class="location-dot bottom-1/4 left-1/2"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enquire: Full Screen Mobile Form -->
+    <section id="enquire" class="py-24 md:py-40 bg-black text-white px-6 md:px-24 rounded-t-[40px] md:rounded-t-[100px]">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 md:gap-32">
+            <div>
+                <h2 class="serif text-[var(--fluid-8xl)] italic leading-none mb-8 md:mb-12">Scale <br>Your <br>Vision.</h2>
+                <p class="text-gray-400 text-lg md:text-xl font-light mb-12">Partner with the global leader in architectural surfacing.</p>
+                <div class="space-y-8">
+                    <div class="flex items-center gap-6">
+                        <div class="w-10 h-10 border border-white/20 rounded-full flex items-center justify-center text-[var(--accent)]">
+                            <i class="fa-solid fa-location-dot text-xs"></i>
+                        </div>
+                        <div>
+                            <p class="text-[8px] font-bold uppercase tracking-widest opacity-40 mb-1">Global HQ</p>
+                            <p class="serif text-xl md:text-2xl italic">Kamala Mills, Mumbai</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white/5 p-8 md:p-12 rounded-3xl backdrop-blur-md">
+                <form class="space-y-8">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="border-b border-white/10 pb-2">
+                            <label class="text-[8px] font-bold uppercase tracking-widest opacity-40">Name</label>
+                            <input type="text" class="w-full bg-transparent outline-none py-2 text-lg serif text-white">
+                        </div>
+                        <div class="border-b border-white/10 pb-2">
+                            <label class="text-[8px] font-bold uppercase tracking-widest opacity-40">Firm</label>
+                            <input type="text" class="w-full bg-transparent outline-none py-2 text-lg serif text-white">
+                        </div>
+                    </div>
+                    <div class="border-b border-white/10 pb-2">
+                        <label class="text-[8px] font-bold uppercase tracking-widest opacity-40">Project Type</label>
+                        <select class="w-full bg-transparent outline-none py-2 text-lg serif text-white appearance-none cursor-pointer">
+                            <option class="bg-black">Hospitality</option>
+                            <option class="bg-black">Corporate</option>
+                            <option class="bg-black">High-End Residential</option>
+                        </select>
+                    </div>
+                    <button class="w-full bg-white text-black py-6 md:py-8 text-[10px] font-bold uppercase tracking-[0.4em] hover:bg-[var(--accent)] hover:text-white transition-all">Submit Global Brief</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer: Simplistic Mobile -->
+    <footer class="py-12 bg-black border-t border-white/5 px-6 md:px-24">
+        <div class="flex flex-col md:flex-row justify-between items-center gap-8 text-center md:text-left">
+            <div class="serif text-xl font-black text-white italic">RD GLOBAL.</div>
+            <div class="flex flex-wrap justify-center gap-6 md:gap-10 text-[9px] font-bold uppercase tracking-widest text-white/30">
+                <a href="#">Privacy</a>
+                <a href="#">Technical</a>
+                <a href="#">LinkedIn</a>
+            </div>
+            <p class="text-[8px] uppercase tracking-[0.4em] text-white/10">&copy; 2026 Rose Decore Holdings</p>
+        </div>
+    </footer>
+
+    <!-- Fixed Mobile CTA -->
+    <div class="fixed bottom-6 right-6 flex flex-col gap-3 z-[2000]">
+        <a href="#" class="w-14 h-14 glass rounded-full flex items-center justify-center shadow-2xl">
+            <i class="fa-solid fa-phone-volume text-sm"></i>
+        </a>
+        <a href="#" class="w-14 h-14 bg-green-500 text-white rounded-full flex items-center justify-center shadow-2xl">
+            <i class="fa-brands fa-whatsapp text-xl"></i>
+        </a>
+    </div>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Header Transformation
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('main-header');
+            if (window.scrollY > 20) {
+                header.style.top = '0px';
+                header.style.padding = window.innerWidth > 768 ? '10px 40px' : '10px 16px';
+                header.firstElementChild.style.borderRadius = '0px';
+            } else {
+                header.style.top = window.innerWidth > 768 ? '2rem' : '1rem';
+                header.style.padding = window.innerWidth > 768 ? '0 2.5rem' : '0 1rem';
+                header.firstElementChild.style.borderRadius = '9999px';
+            }
+        });
+
+        // Mobile-Optimized Slider
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.hero-slide');
+        const progress = document.getElementById('hero-progress');
+
+        function nextSlide() {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+            progress.style.width = ((currentSlide + 1) / slides.length) * 100 + '%';
+        }
+
+        setInterval(nextSlide, 6000);
+
+        // Viewport-based GSAP Reveal
+        gsap.utils.toArray('.serif').forEach(text => {
+            gsap.from(text, {
+                scrollTrigger: {
+                    trigger: text,
+                    start: "top 95%",
+                },
+                opacity: 0,
+                y: 30,
+                duration: 1,
+                ease: "power3.out"
+            });
+        });
+
+        // Prevent Scroll Jitter on Resize
+        window.addEventListener('resize', () => {
+            ScrollTrigger.refresh();
+        });
+    </script>
+</body>
+</html>
